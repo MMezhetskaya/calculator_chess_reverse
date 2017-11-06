@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<!--2 написать функцию реверс для масива
+на вход нужно передавать массив любой размерности на выход должны получать
+зеркально перевернутый массив (обсуждали на паре)-->
+<html>
+<head>
+    <title>Reverse</title>
+    <script type="text/javascript">
+        var arr=[0,1,2,3,4,5,6,7,8];
+        var arr2=[0,1,2,3,4,5,6,7];
+
+        function reverse(arr) {
+            var n=(arr.length-arr.length%2)/2;
+            var length=arr.length;
+            var temp;
+            for (var i=0; i<n; i++){
+                temp=arr[i];
+                arr[i]=arr[length-i-1];
+                arr[length-i-1]=temp;
+            }
+            return arr;
+        }
+
+        document.write (arr2+"<br/>");
+        document.write (reverse(arr2));
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

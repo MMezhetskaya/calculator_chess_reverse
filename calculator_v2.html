@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!-- 1 переписать калькулятор с использованием функций (код  уже скинул выше) + еще добавить проверки на то
+что пользователь введет вместо цыфры букву или вместо операции что то другое-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple calculator</title>
+    <script type="text/javascript">
+
+        function is_number(x)
+        {
+            if (!isNaN(parseFloat(x)) && isFinite(parseFloat(x)))
+                return true;
+            else
+                return false;
+        }
+
+        function is_operand (oper){
+            switch (oper){
+                    case "/":
+                    case "*":
+                    case "%":
+                    case "+":
+                    case "-": {
+                        return oper;
+                    };
+                    break;
+
+                    default:
+                    {
+                        alert("Вы ввели неверный знак операции");
+                        return null;
+                    };
+                }
+        }
+        function input_data(){
+            var arr=new Array();
+            while (!is_number(arr[0])){
+                arr[0] = +prompt("Введите первое число:");
+            }
+            while (!is_number(arr[1])){
+                arr[1] = +prompt("Введите второе число:");
+            }
+            do{
+                arr[2]=prompt("Введите одно из действий: /, *, % , +, -");
+            }while (!is_operand(arr[2]));
+            return arr;
+        }
+
+        function division(a,b){
+            if(b!=0) return a/b;
+            else {
+                alert("Деление на 0 не возможно");
+                return undefined;
+            }
+        }
+
+        function multiply(a,b){
+            return a*b;
+        }
+
+        function division_with_remainder(a,b){
+            if(b!=0) return a%b;
+            else {
+                alert("Деление на 0 не возможно");
+                return undefined;
+            }
+        }
+
+        function sum(a,b){
+            return a+b;
+        }
+
+        function subtraction(a,b){
+            return a-b;
+        }
+
+        function calculator () {
+            var array=input_data();
+            var res=undefined;
+
+            switch (array[2]) {
+                case "/": {
+                    res=division(array[0],array[1]);
+                };
+                    break;
+
+                case "*": {
+                    res=multiply(array[0],array[1]);
+                };
+                    break;
+
+                case "%": {
+                    res=division_with_remainder(array[0],array[1]);
+                };
+                    break;
+
+                case "+": {
+                   res=sum(array[0],array[1]);
+                };
+                    break;
+
+                case "-": {
+                    res=subtraction(array[0],array[1]);
+                };
+                    break;
+            }
+            if (res != undefined)
+                document.write("<p>" + array[0] + " " + array[2] + " " + array[1]+ " = " + res);
+        }
+
+        calculator ();
+
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
